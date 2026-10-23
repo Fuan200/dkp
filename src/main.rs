@@ -1,4 +1,6 @@
+mod generator;
 use clap::{Parser, Subcommand};
+use std::io;
 
 #[derive(Parser)]
 #[command(name = "dk", version, about = "devkitPro")]
@@ -12,12 +14,14 @@ enum Command {
     New { name: String },
 }
 
-fn main() {
+fn main() -> io::Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
         Command::New { name } => {
-            println!("{name}");
+            generator::create_project(&name)?;
+            println!("Project created: {name}");
         }
     }
+    Ok(())
 }
