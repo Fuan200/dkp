@@ -1,0 +1,14 @@
+.*/
+build/
+release/
+debug/
+lib/
+*.a
+*.o
+*.d
+*.elf
+*.rpl
+*.rpx
+*.wuhb
+*.bz2
+CMakeSettings.json

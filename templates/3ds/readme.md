@@ -1,4 +1,4 @@
-## Requirements
+### Requirements
 
 - devkitPro
 - devkitARM
@@ -12,7 +12,7 @@ sudo dkp-pacman -S 3ds-dev
 
 See the [devkitPro documentation](https://devkitpro.org/wiki/devkitPro_pacman).
 
-## Project Structure
+### Project Structure
 
 Inside this project, you will find:
 
@@ -25,7 +25,7 @@ Inside this project, you will find:
     └── main.c
 ```
 
-## Commands
+### Commands
 
 Run all commands from the project root:
 
