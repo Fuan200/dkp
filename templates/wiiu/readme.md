@@ -4,8 +4,6 @@
 - devkitPPC
 - wut
 
-Install the required packages with:
-
 ```sh
 sudo dkp-pacman -S wiiu-dev
 ```
