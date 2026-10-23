@@ -4,6 +4,10 @@
 - devkitARM
 - libnds
 
+```bash
+sudo dkp-pacman -S nds-dev
+```
+
 See the [devkitPro documentation](https://devkitpro.org/wiki/devkitPro_pacman).
 
 ### Project Structure
