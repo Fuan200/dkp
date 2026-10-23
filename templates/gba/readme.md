@@ -29,5 +29,5 @@ Run all commands from the project root:
 
 | Command | Action |
 | :--- | :--- |
-| `make` | Builds the Nintendo DS ROM. |
+| `make` | Builds the Game Boy Advance `.gba` ROM. |
 | `make clean` | Removes generated build files. |
