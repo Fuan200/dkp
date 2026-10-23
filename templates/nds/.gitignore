@@ -1,0 +1,7 @@
+.*/
+*.nds
+*.elf
+*build
+*.dldi
+*.bz2
+*~
