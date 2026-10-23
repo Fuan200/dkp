@@ -29,7 +29,10 @@ fn main() -> Result<(), Box<dyn Error>> {
                 git::initialize(&name)?;
             }
 
-            println!("Project created: {name} ({})", platform.label());
+            println!(
+                "\nProject created successfully!!!\n\nProject: {name}\nPlatform: {}\n\nNext steps:\n\n    $ cd {name}\n    $ make\n",
+                platform.label()
+            );
         }
     }
     Ok(())
