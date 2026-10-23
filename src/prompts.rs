@@ -1,5 +1,6 @@
 use dialoguer::{Select, theme::ColorfulTheme};
 
+#[derive(Clone, Copy)]
 pub enum Platform {
     GameBoyAdvance,
     NintendoDS,
@@ -10,6 +11,15 @@ pub enum Platform {
 }
 
 impl Platform {
+    pub const ALL: [Self; 6] = [
+        Self::GameBoyAdvance,
+        Self::NintendoDS,
+        Self::Wii,
+        Self::Nintendo3DS,
+        Self::WiiU,
+        Self::Switch,
+    ];
+
     pub fn label(&self) -> &str {
         match self {
             Self::GameBoyAdvance => "Game Boy Advance",
@@ -20,17 +30,24 @@ impl Platform {
             Self::Switch => "Nintendo Switch",
         }
     }
+
+    pub fn template_directory(&self) -> &str {
+        match self {
+            Self::GameBoyAdvance => "gba",
+            Self::NintendoDS => "nds",
+            Self::Wii => "wii",
+            Self::Nintendo3DS => "3ds",
+            Self::WiiU => "wiiu",
+            Self::Switch => "switch",
+        }
+    }
 }
 
 pub fn select_platform() -> dialoguer::Result<Platform> {
-    let choices = [
-        "Game Boy Advance",
-        "Nintendo DS",
-        "Wii",
-        "Nintendo 3DS",
-        "Wii U",
-        "Nintendo Switch",
-    ];
+    let choices: Vec<&str> = Platform::ALL
+        .iter()
+        .map(|platform| platform.label())
+        .collect();
 
     let selection = Select::with_theme(&ColorfulTheme::default())
         .with_prompt("Select a platform")
@@ -38,12 +55,5 @@ pub fn select_platform() -> dialoguer::Result<Platform> {
         .default(0)
         .interact()?;
 
-    Ok(match selection {
-        0 => Platform::GameBoyAdvance,
-        1 => Platform::NintendoDS,
-        2 => Platform::Wii,
-        3 => Platform::Nintendo3DS,
-        4 => Platform::WiiU,
-        _ => Platform::Switch,
-    })
+    Ok(Platform::ALL[selection])
 }

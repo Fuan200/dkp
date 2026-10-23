@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     match cli.command {
         Command::New { name } => {
             let platform = prompts::select_platform()?;
-            generator::create_project(&name)?;
+            generator::create_project(&name, &platform)?;
             println!("Project created: {name} ({})", platform.label());
         }
     }
