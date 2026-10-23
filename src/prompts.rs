@@ -1,4 +1,4 @@
-use dialoguer::{Select, theme::ColorfulTheme};
+use dialoguer::{Confirm, Select, theme::ColorfulTheme};
 
 #[derive(Clone, Copy)]
 pub enum Platform {
@@ -56,4 +56,11 @@ pub fn select_platform() -> dialoguer::Result<Platform> {
         .interact()?;
 
     Ok(Platform::ALL[selection])
+}
+
+pub fn confirm_git_init() -> dialoguer::Result<bool> {
+    Confirm::with_theme(&ColorfulTheme::default())
+        .with_prompt("Initialize a Git Repository?")
+        .default(true)
+        .interact()
 }

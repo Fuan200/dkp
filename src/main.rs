@@ -1,4 +1,5 @@
 mod generator;
+mod git;
 mod prompts;
 use clap::{Parser, Subcommand};
 use std::error::Error;
@@ -21,7 +22,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     match cli.command {
         Command::New { name } => {
             let platform = prompts::select_platform()?;
+            let initalize_git = prompts::confirm_git_init()?;
             generator::create_project(&name, &platform)?;
+
+            if initalize_git {
+                git::initialize(&name)?;
+            }
+
             println!("Project created: {name} ({})", platform.label());
         }
     }
