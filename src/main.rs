@@ -1,6 +1,7 @@
 mod generator;
+mod prompts;
 use clap::{Parser, Subcommand};
-use std::io;
+use std::error::Error;
 
 #[derive(Parser)]
 #[command(name = "dk", version, about = "devkitPro")]
@@ -14,13 +15,14 @@ enum Command {
     New { name: String },
 }
 
-fn main() -> io::Result<()> {
+fn main() -> Result<(), Box<dyn Error>> {
     let cli = Cli::parse();
 
     match cli.command {
         Command::New { name } => {
+            let platform = prompts::select_platform()?;
             generator::create_project(&name)?;
-            println!("Project created: {name}");
+            println!("Project created: {name} ({})", platform.label());
         }
     }
     Ok(())
