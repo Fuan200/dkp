@@ -2,7 +2,27 @@
 name = "dkp"
 version = "0.1.0"
 edition = "2024"
+description = "CLI for creating devkitPro homebrew projects"
+license = "MIT"
+readme = "readme.md"
+repository = "https://github.com/Fuan200/dkp"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
 dialoguer = "0.12.0"
+
+[package.metadata.deb]
+maintainer = "Fuan200 <juandiazfdez1992@gmail.com>"
+copyright = "2026, Juan Díaz"
+license-file = ["LICENSE"]
+assets = [
+    ["target/release/dkp", "usr/bin/", "755"],
+]
+
+[package.metadata.generate-rpm]
+summary = "CLI for creating devkitPro homebrew projects"
+license = "MIT"
+release = "1"
+assets = [
+    { source = "target/release/dkp", dest = "/usr/bin/dkp", mode = "755" }
+]

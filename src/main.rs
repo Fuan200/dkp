@@ -5,7 +5,7 @@ use clap::{Parser, Subcommand};
 use std::error::Error;
 
 #[derive(Parser)]
-#[command(name = "dk", version, about = "devkitPro")]
+#[command(name = "dkp", version, about = "dkp")]
 struct Cli {
     #[command(subcommand)]
     command: Command,
