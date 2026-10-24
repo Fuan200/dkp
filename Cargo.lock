@@ -135,7 +135,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "dk"
+name = "dkp"
 version = "0.1.0"
 dependencies = [
  "clap",
