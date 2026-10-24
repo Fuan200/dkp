@@ -5,7 +5,7 @@ use clap::{Parser, Subcommand};
 use std::error::Error;
 
 #[derive(Parser)]
-#[command(name = "dkp", version, about = "dkp")]
+#[command(name = "dkp", version, about = "CLI for creating devkitPro homebrew projects")]
 struct Cli {
     #[command(subcommand)]
     command: Command,
@@ -13,7 +13,11 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
-    New { name: String },
+    #[command(about="Create a new devkitPro project: dkp new <name>")]
+    New { 
+        #[arg(value_name="name", help="Name of the project directory")]
+        name: String
+    },
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
